@@ -10,7 +10,7 @@ class ProjectsList extends StatefulWidget {
 
 class _ProjectsListState extends State<ProjectsList> {
 
-  List<Project> _projects;
+  static List<Project> _projects;
 
 
   @override
@@ -24,7 +24,7 @@ class _ProjectsListState extends State<ProjectsList> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: AppBar(title: Text("Test"),),
+      appBar: AppBar(title: Text("Page just for Testing"), backgroundColor: new Color(0xFF673AB7),),
       body: Column(
         children: <Widget>[
           Text("Projects"),

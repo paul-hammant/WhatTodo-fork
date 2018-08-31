@@ -19,9 +19,10 @@ void main() {
     SerializableFinder addProjectButton = find.byValueKey('add-project-button');
 
     test('Create new project', () async {
-      final int start = DateTime.now().millisecondsSinceEpoch;
+      int start = 0;
+
       await driver.tap(projectsText);
-      final int iterations = 20;
+      final int iterations = 21;
       int counter = 0;
       while(counter < iterations) {
         final String projectName = 'Hello world $counter';
@@ -38,12 +39,15 @@ void main() {
         await driver.scrollIntoView(find.text(projectName));
         await driver.waitFor(find.text(projectName));
         counter++;
+        if (counter == 1) {
+          start = DateTime.now().millisecondsSinceEpoch;
+        }
       }
 
       final int end = DateTime.now().millisecondsSinceEpoch;
       final int duration = end - start;
       print('$iterations iterations during $duration ms');
-      print('average ${(duration/iterations).toStringAsFixed(2)} ms per test');
+      print('average ${(duration/(iterations-1)).toStringAsFixed(2)} ms per test');
 
   });
 
